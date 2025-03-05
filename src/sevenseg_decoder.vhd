@@ -55,6 +55,7 @@ begin
                    "0100111" when  "1100",
                    "0100001" when  "1101",
                    "0000110" when  "1110",
-                   "0001110" when  "1111";
+                   "0001110" when  "1111",
+                   "1000000" when others;
 
 end Behavioral;
