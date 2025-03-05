@@ -73,23 +73,20 @@ component sevenseg_decoder is
 
                o_seg_n : out STD_LOGIC_VECTOR (6 downto 0));
 
-    end component sevenseg_decoder;
+   end component sevenseg_decoder;
 
     signal w_7SD_EN_n : std_logic;
-
-    signal w_addends     : std_logic_vector(3 downto 0) :=; -- the numbers being added
-
-	signal w_o_seg_n     : std_logic;
+    signal w_addends  : std_logic_vector(3 downto 0); 
+	signal w_o_seg_n  : std_logic_vector (6 downto 0);
 
 begin
 
-    sevenseg_decoder1 : sevenseg_decoder port map(
+    sevenseg_decoder1 : sevenseg_decoder
+        port map(
+            i_Hex => w_addends(3 downto 0),
 
-        i_Hex => w_addends(3 downto 0),
-
-        o_seg_n => w_o_seg_n
-
-    );
+            o_seg_n => w_o_seg_n
+        );
 
     test_process : process
 
@@ -99,49 +96,49 @@ begin
 
         w_addends <= "0000"; wait for 10 ns;
 
-        assert(w_seg_n = "0000001") report "bad with zero" severity failure;
+        assert(w_seg_n = "1000000") report "bad with zero" severity failure;
 
         --|Test1
 
         w_addends <= "0001"; wait for 10 ns;
 
-        assert(w_seg_n = "1001111") report "bad with one" severity failure;
+        assert(w_seg_n = "1111001") report "bad with one" severity failure;
 
         --|Test2
 
         w_addends <= "0010"; wait for 10 ns;
 
-        assert(w_seg_n = "0010010") report "bad with two" severity failure;
+        assert(w_seg_n = "0100100") report "bad with two" severity failure;
 
         --|Test3
 
         w_addends <= "0011"; wait for 10 ns;
 
-        assert(w_seg_n = "0000110") report "bad with three" severity failure;
+        assert(w_seg_n = "0110000") report "bad with three" severity failure;
 
         --|Test4
 
         w_addends <= "0100"; wait for 10 ns;
 
-        assert(w_seg_n = "1001100") report "bad with four" severity failure;
+        assert(w_seg_n = "0011001") report "bad with four" severity failure;
 
         --|Test5
 
         w_addends <= "0101"; wait for 10 ns;
 
-        assert(w_seg_n = "0100100") report "bad with five" severity failure;
+        assert(w_seg_n = "0010010") report "bad with five" severity failure;
 
         --|Test6
 
         w_addends <= "0110"; wait for 10 ns;
 
-        assert(w_seg_n = "0100000") report "bad with six" severity failure;
+        assert(w_seg_n = "0000010") report "bad with six" severity failure;
 
         --|Test7
 
         w_addends <= "0111"; wait for 10 ns;
 
-        assert(w_seg_n = "0001111") report "bad with seven" severity failure;
+        assert(w_seg_n = "1111000") report "bad with seven" severity failure;
 
         --|Test8
 
@@ -153,7 +150,7 @@ begin
 
         w_addends <= "1001"; wait for 10 ns;
 
-        assert(w_seg_n = "0000100") report "bad with nine" severity failure;
+        assert(w_seg_n = "0010000") report "bad with nine" severity failure;
 
         --|TestA
 
@@ -165,7 +162,7 @@ begin
 
         w_addends <= "1011"; wait for 10 ns;
 
-        assert(w_seg_n = "1100000") report "bad with B" severity failure;
+        assert(w_seg_n = "0000011") report "bad with B" severity failure;
 
         --|TestC
 
@@ -177,25 +174,22 @@ begin
 
         w_addends <= "1101"; wait for 10 ns;
 
-        assert(w_seg_n = "1000010") report "bad with D" severity failure;
+        assert(w_seg_n = "0100001") report "bad with D" severity failure;
 
         --|TestE
 
         w_addends <= "1110"; wait for 10 ns;
 
-        assert(w_seg_n = "0110000") report "bad with E" severity failure;
+        assert(w_seg_n = "0000110") report "bad with E" severity failure;
 
         --|TestF
 
         w_addends <= "1111"; wait for 10 ns;
 
-        assert(w_seg_n = "0111000") report "bad with F" severity failure;
+        assert(w_seg_n = "0001110") report "bad with F" severity failure;
 
             wait;
 
        end process;
 
-end Behavioral;
-
- 
 end Behavioral;
