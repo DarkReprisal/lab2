@@ -77,7 +77,7 @@ component sevenseg_decoder is
 
     signal w_7SD_EN_n : std_logic;
     signal w_addends  : std_logic_vector(3 downto 0); 
-	signal w_o_seg_n  : std_logic_vector (6 downto 0);
+	signal w_seg_n  : std_logic_vector (6 downto 0);
 
 begin
 
@@ -85,7 +85,7 @@ begin
         port map(
             i_Hex => w_addends(3 downto 0),
 
-            o_seg_n => w_o_seg_n
+            o_seg_n => w_seg_n
         );
 
     test_process : process
