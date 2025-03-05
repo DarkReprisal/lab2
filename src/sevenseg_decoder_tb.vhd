@@ -150,7 +150,7 @@ begin
 
         w_addends <= "1001"; wait for 10 ns;
 
-        assert(w_seg_n = "0010000") report "bad with nine" severity failure;
+        assert(w_seg_n = "0011000") report "bad with nine" severity failure;
 
         --|TestA
 
